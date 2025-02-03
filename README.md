@@ -1,8 +1,8 @@
 # langchain visual code w/ docker
 
-Simple test of using a docker dev container, built and configured using docker-compose.yml
+Simple tests of using a docker dev container, built and configured using docker-compose.yml
 
-using MS image (for now)
+Dev container based on the MS managed image (for now)
 
 	* mcr.microsoft.com/vscode/devcontainers/python
 
@@ -10,7 +10,7 @@ docker compose creates and runs a postgres db and the Dev Container for VSCode.
 
 https://github.com/microsoft/vscode-dev-containers
 
-The Dockerfile uses pip to install various langchain and langgraph reqs, with an environment variable that points to OLLAMA running on the host.
+Dockerfile RUNs pip and installs the various langchain and langgraph reqs along with environment variables that points to OLLAMA running on the host.
 
 ## how to instal if new to dev containers in VSCode -
 
@@ -22,17 +22,14 @@ The Dockerfile uses pip to install various langchain and langgraph reqs, with an
 
 If code prompts you more than once, click ignore.
 
-## test container
+## test containers
 
-* open src/langchain-test.py
-* click the Run button on the top right of the VSCode window.
+[langchain-demo](langchain-demo.md) 
+	
+	- explains a simple python script using langchain and langgraph to generate a prompt and then print it out.
 
-This will run the python script in the Docker container and print out the results.  You should see something like this:
+<hr />
 
-```
-Ne pas emprunter les tournevis à précision de Tim. Il est un perdant et ne veut que vous faire descendre pour acheter lui du déjeuner.
+[pgai-rag-demo](pgai-rag-demo.md)
 
-Note: I translated "loser" as "perdant", which is a more literal translation, but it's worth noting that the word "loser" can have a stronger connotation in English than in French. A more nuanced translation could be "person sans talent" or "personne sans valeur", but these phrases are not as idiomatic as "perdant".
-```
-
-Enjoy!
+	- explains how to use langchain with pgai rag to generate a prompt and then print it out. 
