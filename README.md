@@ -26,10 +26,10 @@ If code prompts you more than once, click ignore.
 
 [langchain-demo](langchain-demo.md) 
 	
-	- explains a simple python script using langchain and langgraph to generate a prompt and then print it out.
+	- langchain used to generate a prompt and print.
 
 <hr />
 
 [pgai-rag-demo](pgai-rag-demo.md)
 
-	- explains how to use langchain with pgai rag to generate a prompt and then print it out. 
+	- pgai/pgvector rag using postgresql to generate a prompt and print. 
