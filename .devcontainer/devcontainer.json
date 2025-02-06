@@ -10,6 +10,22 @@
 		"docker-compose.yml"
 	],
 
+	"containerEnv": {
+		"OLLAMA_HOST": "http://spicynoodleM4.taild54a2.ts.net:11434",
+		"POSTGRESQL_HOST": "snp-containers.taild54a2.ts.net",
+		"POSTGRESQL_PORT": "5432",
+		"POSTGRES_USER": "postgres",
+		"POSTGRES_PASSWORD": "postgres",
+		"POSTGRES_DB": "postgres"
+	},
+	"remoteEnv": {
+		"OLLAMA_HOST": "http://spicynoodleM4.taild54a2.ts.net:11434",
+		"POSTGRESQL_HOST": "snp-containers.taild54a2.ts.net",
+		"POSTGRESQL_PORT": "5432",
+		"POSTGRES_USER": "postgres",
+		"POSTGRES_PASSWORD": "postgres",
+		"POSTGRES_DB": "postgres"
+	},
 	// The 'service' property is the name of the service for the container that VS Code should
 	// use. Update this value and .devcontainer/docker-compose.yml to the real service name.
 	"service": "devcontainer",
