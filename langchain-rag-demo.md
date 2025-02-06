@@ -1,6 +1,6 @@
 # langchain-rag-demo
 
-demo - [langchain-rag-demo.py](langchain-rag-demo.py)
+demo - [langchain-rag-demo.py](langchain-rag-demo.py){:target="_blank"}
 
 ## SQLAlchemy 
 
