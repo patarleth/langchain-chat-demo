@@ -1,17 +1,18 @@
 from langchain_ollama import ChatOllama
 from langchain_ollama import OllamaEmbeddings
-# from langchain_core.messages import AIMessage
+
 from langchain_core.documents import Document
+
 from langchain_postgres.vectorstores import PGVector
 # https://github.com/langchain-ai/langchain-postgres/blob/main/examples/vectorstore.ipynb
+
 from sqlalchemy import create_engine, text, URL;
 
 import os, logging
-# https://python.langchain.com/docs/integrations/chat/ollama/
 
+# https://python.langchain.com/docs/integrations/chat/ollama/
 # when running from inside docker -
 # In Dockerfile ENV is set with OLLAMA_HOST=http://host.docker.internal:111434 
-
 # my tailnet ollama http://spicynoodleM4.taild54a2.ts.net:11434
 # my tailnet postgressql host snp-connections.taild54a2.ts.net
 
@@ -64,12 +65,7 @@ url_object = URL.create(
 print(f"sqlalchemy url object {url_object}\n")
 
 collection_name = "langchaindocs"
-embeddings = OllamaEmbeddings(model="llama3.2")
-
-# test printing first 10 embeddings from the OllamaEmbeddings model
-test_embedding_text = "The meaning of life is 42"
-vector = embeddings.embed_query(test_embedding_text)
-print(vector[:10])
+embeddings = OllamaEmbeddings(model="llama3.2", base_url=ollama_base_url)
 
 db_engine = create_engine(url_object)
 db_engine.logger.info("Connected to PostgreSQL database")
@@ -88,15 +84,33 @@ vectorstore = PGVector(
     logger=logger,
 )
 
+# it is not necessary to recreate the collection, I leave it commented out to show it can be done
 # vectorstore.delete_collection()
 # vectorstore.create_collection()
 
 vectorstore.add_documents(docs, ids=[doc.metadata['id'] for doc in docs])
 
+# use the embedding class to create a vector based on the search string passed
 similar_docs = vectorstore.similarity_search('kitty', k=4)
+print("similarity_search results")
 for doc in similar_docs:
     print(f"  ----> {doc.id} - {doc.page_content}")
+print("---")
 
+# perfrom the same search using the embedding directly, just to show it can be done
+
+# test printing first 10 embeddings from the OllamaEmbeddings model
+test_embedding_text = "kitty"
+kitty_vector = embeddings.embed_query(test_embedding_text)
+print(kitty_vector[:10])
+
+search_by_vector_docs = vectorstore.similarity_search_by_vector(kitty_vector, k=4)
+
+print("direct search_by_vector_docs results")
+for doc in search_by_vector_docs:
+    print(f"  ----> {doc.id} - {doc.page_content}")
+
+# sample raw query using sqlalchemy just for fun
 # with db_engine.connect() as connection:
 #    # result = connection.execute(text(f"select id from {collection_name}"))
 #    result = connection.execute(text(f"show search_path"))
