@@ -16,13 +16,13 @@ import os, logging
 # my tailnet postgressql host snp-connections.taild54a2.ts.net
 
 logging.basicConfig()
-logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
+logging.getLogger('sqlalchemy.engine').setLevel(logging.ERROR)
 
 logger = logging.getLogger('postgresql_pgvector')
-logger.setLevel(level=logging.DEBUG)
+logger.setLevel(level=logging.INFO)
 
-ollama_base_url=os.environ.get('OLLAMA_HOST', 'http://localhost:11434')
-psql_host=os.environ.get('POSTGRESQL_HOST', 'localhost')
+ollama_base_url=os.environ.get('OLLAMA_HOST', 'http://spicynoodleM4.taild54a2.ts.net:11434')
+psql_host=os.environ.get('POSTGRESQL_HOST', 'snp-containers.taild54a2.ts.net')
 psql_port=os.environ.get('POSTGRESQL_PORT', '5432')
 psql_user=os.environ.get('POSTGRES_USER', 'postgres')
 psql_password=os.environ.get('POSTGRES_PASSWORD', 'postgres')
@@ -48,11 +48,6 @@ llm = ChatOllama(
     # other params...
 )
 
-ollama_base_url='http://spicynoodleM4.taild54a2.ts.net:11434'
-psql_host='snp-connections.taild54a2.ts.net'
-psql_host='100.111.100.47'
-psql_db='postgres'
-
 # create url connection string directly
 print(f"\n  psql_host {psql_host}\n  psql_port {psql_port}\n  psql_user {psql_user}\n  psql_password {psql_password}\n  psql_db {psql_db}\n")
 connection = f"postgresql+psycopg://{psql_user}:{psql_password}@{psql_host}:{psql_port}/{psql_db}"
@@ -77,7 +72,6 @@ vector = embeddings.embed_query(test_embedding_text)
 print(vector[:10])
 
 db_engine = create_engine(url_object)
-db_engine.logger.setLevel(logging.DEBUG)
 db_engine.logger.info("Connected to PostgreSQL database")
 
 exec_options = db_engine.get_execution_options()
@@ -95,17 +89,18 @@ vectorstore = PGVector(
 )
 
 # vectorstore.delete_collection()
-vectorstore.create_collection()
+# vectorstore.create_collection()
+
 vectorstore.add_documents(docs, ids=[doc.metadata['id'] for doc in docs])
-# vectorstore.add_documents(docs)
 
-similar_docs = vectorstore.similarity_search('kitty', k=10)
+similar_docs = vectorstore.similarity_search('kitty', k=4)
+for doc in similar_docs:
+    print(f"  ----> {doc.id} - {doc.page_content}")
 
-with db_engine.connect() as connection:
-    # result = connection.execute(text(f"select id from {collection_name}"))
-    result = connection.execute(text(f"show search_path"))
-    for row in result:
-        # print(f"{collection_name} id:", row.id)
-        print(f"{row.search_path}")
+# with db_engine.connect() as connection:
+#    # result = connection.execute(text(f"select id from {collection_name}"))
+#    result = connection.execute(text(f"show search_path"))
+#    for row in result:
+#        print(f"{row.search_path}")
 
 print(f"done")

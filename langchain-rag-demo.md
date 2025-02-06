@@ -26,4 +26,21 @@ langchain PGVector docs -
         embedding - the actual vector col for similarity search, 
         cmetadata - json metadata object passed in for each document on insert
 
-    Yes, you have to join these tables two together to return documents for a specifc collection.
+    Yes, langchain_postgres requires you to join these tables two together to return documents for a specifc collection.  Frameworks are fun, fun, fun
+
+## what this demo does
+
+[langchain-rag-demo.py](langchain-rag-demo.py)
+
+    set logging level
+    set ollama and postgres host/port etc from env vars
+    create array of test data and ids
+    connect to ollama
+    create formatted connection url manually for pgvector
+    print and compare the manually created connction url with sqlalchemy connection url builder
+    specify the 'embeddings' class used to generate the vector column value
+    connect to SQLAlchemy engine with url above
+    create the langchain vector store class, passing the embeddings class, connection, collection name, logger
+    add the test documents to the langchain_pg_embedding table
+    FINALLY limit top four(4) cosine similarity search results against the langchain_pg_embedding with sample query string
+    print out docs returned
