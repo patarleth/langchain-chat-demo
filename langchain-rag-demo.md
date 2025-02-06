@@ -1,6 +1,6 @@
 # langchain-rag-demo
 
-demo - [langchain-rag-demo.py](langchain-rag-demo.py){:target="_blank"}
+demo - <a href="https://github.com/patarleth/langchain-chat-demo/blob/main/langchain-rag-demo.py">langchain-rag-demo.py</a>
 
 ## SQLAlchemy 
 
