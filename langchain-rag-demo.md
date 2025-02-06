@@ -1,6 +1,6 @@
 # langchain-rag-demo
 
-demo - <a href="https://github.com/patarleth/langchain-chat-demo/blob/main/langchain-rag-demo.py">langchain-rag-demo.py</a>
+demo - <a href="https://github.com/patarleth/langchain-chat-demo/blob/main/langchain-rag-demo.py" target="_blank">langchain-rag-demo.py</a>
 
 ## SQLAlchemy 
 
