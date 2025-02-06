@@ -42,8 +42,9 @@ docs = [
     Document(page_content='a cooking class for beginners is offered at the community center', metadata={"id": 10, "location": "community center", "topic": "classes"})
 ]
 
+# this is not necessary for this demo. I include it for demonstration purposes.
 llm = ChatOllama(
-    model="openhermes:latest",
+    model="llama3.2",
     temperature=0,
     base_url=ollama_base_url,
     # other params...
@@ -70,10 +71,10 @@ embeddings = OllamaEmbeddings(model="llama3.2", base_url=ollama_base_url)
 db_engine = create_engine(url_object)
 db_engine.logger.info("Connected to PostgreSQL database")
 
-exec_options = db_engine.get_execution_options()
-print(f"exec options size {len(exec_options)}")
-for key,value in exec_options:
-    print(f"  key: {key}, value: {value}")
+# exec_options = db_engine.get_execution_options()
+#print(f"exec options size {len(exec_options)}")
+#for key,value in exec_options:
+#    print(f"  key: {key}, value: {value}")
 
 vectorstore = PGVector(
     embeddings=embeddings,
@@ -91,10 +92,23 @@ vectorstore = PGVector(
 vectorstore.add_documents(docs, ids=[doc.metadata['id'] for doc in docs])
 
 # use the embedding class to create a vector based on the search string passed
+# first query is retrieve documents with their score
+similar_docs_relevance = vectorstore.max_marginal_relevance_search_with_score('kitty', k=4)
+print("max_marginal_relevance_search_with_score results")
+for doc_w_rel in similar_docs_relevance:
+    doc = doc_w_rel[0]
+    rel = doc_w_rel[1]
+    print(f"  ----> {rel} - {doc.id} - {doc.page_content}")
+
+print("---")
+
+# next ONLY returns the docs sans score
 similar_docs = vectorstore.similarity_search('kitty', k=4)
 print("similarity_search results")
 for doc in similar_docs:
     print(f"  ----> {doc.id} - {doc.page_content}")
+    # print(f"  ----> {doc}")
+
 print("---")
 
 # perfrom the same search using the embedding directly, just to show it can be done
