@@ -1,5 +1,7 @@
 # langchain-rag-demo
 
+demo - [langchain-rag-demo.py](langchain-rag-demo.py)
+
 ## SQLAlchemy 
 
 The langchain-postgres library leverges SQLAlchemy core to manage all PGVector column in the public.langchain_pg_embedding table. This table is joined to the collection table to provide a separation between the embedding and the collection metadata.
@@ -29,8 +31,6 @@ langchain PGVector docs -
     Yes, langchain_postgres requires you to join these tables two together to return documents for a specifc collection.  Frameworks are fun, fun, fun
 
 ## what this demo does
-
-[langchain-rag-demo.py](langchain-rag-demo.py)
 
     set logging level
     set ollama and postgres host/port etc from env vars
