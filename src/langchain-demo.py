@@ -7,7 +7,7 @@ import os
 
 # when running from inside docker -
 # In Dockerfile ENV is set with OLLAMA_HOST=http://host.docker.internal:111434 
-# my tailnet snp.taild54a2.ts.net:11434
+# my tailnet spicynoodleM4.taild54a2.ts.net:11434
 base_url=os.environ.get('OLLAMA_HOST', 'http://localhost:11434')
 
 llm = ChatOllama(

@@ -21,7 +21,7 @@ def create_documents_table(conn):
     with conn:
         with conn.cursor() as cur:
             cur.execute("""
-                    CREATE TABLE IF NOT EXISTS documents (
+                    CREATE TABLE IF NOT EXISTS pgai_documents (
                         id SERIAL PRIMARY KEY,
                         title TEXT,
                         content TEXT,
@@ -33,7 +33,7 @@ def create_documents_table(conn):
 def insert_documents(conn, document_data):
     with create_documents_table(conn):
         with conn.cursor() as cur:
-            cur.execute(f"select count(*) from documents")
+            cur.execute(f"select count(*) from pgai_documents")
             rows = cur.fetchall()
             docCount = rows[0][0]
             if docCount == 0:
@@ -42,7 +42,7 @@ def insert_documents(conn, document_data):
                     # nomic-embed-text
                     for doc in document_data:
                         cur.execute("""
-                            INSERT INTO documents (title, content, embedding)
+                            INSERT INTO pgai_documents (title, content, embedding)
                             VALUES (
                                 %(title)s,
                                 %(content)s,
@@ -59,7 +59,7 @@ def fetch_documents_by_vector_similarity(conn, llm_query) -> str:
             query_embedding = cur.fetchone()[0]
 
             # Retrieve relevant documents based on cosine distance
-            cur.execute(f"SELECT title, content, 1 - (embedding <=> %s) AS similarity FROM documents ORDER BY similarity LIMIT 300", (query_embedding,))
+            cur.execute(f"SELECT title, content, 1 - (embedding <=> %s) AS similarity FROM pgai_documents ORDER BY similarity LIMIT 300", (query_embedding,))
 
             rows = cur.fetchall()
             for row in rows:
