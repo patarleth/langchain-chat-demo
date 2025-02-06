@@ -89,27 +89,44 @@ vectorstore = PGVector(
 # vectorstore.delete_collection()
 # vectorstore.create_collection()
 
+number_of_docs_to_return = 4
+
 vectorstore.add_documents(docs, ids=[doc.metadata['id'] for doc in docs])
 
 # use the embedding class to create a vector based on the search string passed
 # first query is retrieve documents with their score
-similar_docs_relevance = vectorstore.max_marginal_relevance_search_with_score('kitty', k=4)
+max_marginal_docs_relevance = vectorstore.max_marginal_relevance_search_with_score('kitty', k=number_of_docs_to_return)
 print("max_marginal_relevance_search_with_score results")
-for doc_w_rel in similar_docs_relevance:
+for doc_w_rel in max_marginal_docs_relevance:
     doc = doc_w_rel[0]
     rel = doc_w_rel[1]
     print(f"  ----> {rel} - {doc.id} - {doc.page_content}")
 
-print("---")
+print("\n---\n")
+
+similar_with_rel_score = vectorstore.similarity_search_with_relevance_scores('kitty', k=number_of_docs_to_return)
+print("similarity_search_with_relevance_scores results")
+for doc_w_rel in similar_with_rel_score:
+    doc = doc_w_rel[0]
+    rel = doc_w_rel[1]
+    print(f"  ----> {rel} - {doc.id} - {doc.page_content}")
+print("\n---\n")
+
+vectorstore.similarity_search_with_score('kitty', k=number_of_docs_to_return)
+print("similarity_search_with_score results")
+for doc_w_rel in vectorstore.similarity_search_with_score('kitty', k=number_of_docs_to_return):
+    doc = doc_w_rel[0]
+    score = doc_w_rel[1]
+    print(f"  ----> {score} - {doc.id} - {doc.page_content}")
+print("\n---\n")
 
 # next ONLY returns the docs sans score
-similar_docs = vectorstore.similarity_search('kitty', k=4)
+similar_docs = vectorstore.similarity_search('kitty', k=number_of_docs_to_return)
 print("similarity_search results")
 for doc in similar_docs:
     print(f"  ----> {doc.id} - {doc.page_content}")
     # print(f"  ----> {doc}")
-
-print("---")
+print("\n---\n")
 
 # perfrom the same search using the embedding directly, just to show it can be done
 
@@ -118,7 +135,7 @@ test_embedding_text = "kitty"
 kitty_vector = embeddings.embed_query(test_embedding_text)
 print(kitty_vector[:10])
 
-search_by_vector_docs = vectorstore.similarity_search_by_vector(kitty_vector, k=4)
+search_by_vector_docs = vectorstore.similarity_search_by_vector(kitty_vector, k=number_of_docs_to_return)
 
 print("direct search_by_vector_docs results")
 for doc in search_by_vector_docs:
