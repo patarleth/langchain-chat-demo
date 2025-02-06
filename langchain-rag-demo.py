@@ -15,6 +15,9 @@ import os, logging
 # my tailnet ollama http://spicynoodleM4.taild54a2.ts.net:11434
 # my tailnet postgressql host snp-connections.taild54a2.ts.net
 
+logging.basicConfig()
+logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
+
 logger = logging.getLogger('postgresql_pgvector')
 logger.setLevel(level=logging.DEBUG)
 

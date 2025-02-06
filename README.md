@@ -33,3 +33,8 @@ If code prompts you more than once, click ignore.
 [pgai-rag-demo](pgai-rag-demo.md)
 
 	- pgai/pgvector rag using postgresql to generate a prompt and print. 
+
+<hr />
+[langchain-rag-demo](langchain-rag-demo.md)
+
+	- langchain-postgres.PGVector used to generate document embeddings and print similarities.
