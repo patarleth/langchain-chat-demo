@@ -1,1 +1,1 @@
-from prompt_tools import PromptTools
+from tool_prompt.utils import PromptTools

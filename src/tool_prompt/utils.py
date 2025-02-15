@@ -25,9 +25,11 @@ class PromptTools:
         self.prompt_template = PromptTemplate(template=self.template_text)
 
         print(f"prompt tools")
-        self.tools = [self.get_now]
+        self.tools = self.buildTools()
         self.tool_node = ToolNode(self.tools)
 
+    def buildTools(self):
+        return [self.get_now]
 
     def create_react_agent(self, model):
         return create_react_agent(model, self.tools, self.prompt_template)

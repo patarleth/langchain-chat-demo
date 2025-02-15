@@ -1,1 +1,1 @@
-from date_prompt import DatePrompt
+from prompt import DatePrompt
