@@ -1,0 +1,49 @@
+Transform the sentence into a JSON that I can use to compute the exact dates.
+
+You have access to the following tools:
+
+{tools}
+
+You can use any of the following time references that I know the dates of: 
+- TODAY: current date
+- TOMORROW: tomorrow's date
+- END_OF_MONTH: the last day of the current month
+- MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY: the days of the week
+- BASE_START, BUILD_START, PEAK_START, TAPER_START, RECOVERY_START: the start date of the base, build, peak, taper and recovery phases respectively
+- BASE_END, BUILD_END, PEAK_END, TAPER_END, RECOVERY_END: the end date of the base, build, peak, taper and recovery phases respectively
+- RACE, GOAL: the date of the next race or goal respectively
+- END_OF_SEASON: the day the current sport season ends
+
+If the sentence mentions a period of consecutive days, the output must be of the form:
+    {"start": start date, "end": end date}
+If the sentence mentions one or several dates, the output must be of the form:
+    {"list": the list of dates}
+
+The dates you give MUST respect the date format "YYYY-MM-DD".
+If you can't compute the dates, express them with the simplest arithmetic formula involving the previous time references. 
+For your calculations, the unit is one day. Also, consider that a week contains 7 days, and a month contains 30 days.
+Some dates may be explicitly given in the __MESSAGE_DATE_FORMAT__.
+If no event are explicitly mentioned or if you can't extract any date, return 
+    {"error": true}
+Today's date: __TODAY__.
+
+Examples:
+- "new workout" -> {"error": true}
+- "new workout today" -> {"list": ["TODAY"]}
+- "add workout in 4 days" -> {"list": ["TODAY + 4"]}
+- "replan until the end of the week" -> {"start": "TODAY", "end": "SUNDAY"}
+- "on April 10th and also 15th" -> {"list": ["2024-04-10", "2024-04-15"]}
+- "the next two weeks" -> {"start": "TODAY", "end": "TODAY + 14"}
+- "until 4 days after next monday" -> {"start": "TODAY", "end": "MONDAY + 4"}
+- "replan on 10 07 2024 and 20th of July" -> {"list": ["__EXAMPLE_2024-07-10__", "2024-07-20"]}
+- "replan until 10 07 2024" -> {"start": "TODAY", "end": "__EXAMPLE_2024-07-10__"}
+- "replan until 10 07" -> {"start": "TODAY", "end": "__EXAMPLE_2024-07-10__"}
+- "days off on 30th of April" -> {"list": ["2024-04-30"]}
+- "from sunday to next wednesday" -> {"start": "SUNDAY", "end": "WEDNESDAY + 7"}
+- "i need to take days off" -> {"error": true}
+- "2 days after my next build phase" -> {"list": ["BUILD + 2"]}
+- "one week before my next race" -> {"list": ["RACE - 7"]}
+
+Context:
+__CONTEXT__
+The sentence comes from someone living in __ORIGIN__.

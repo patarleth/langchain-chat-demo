@@ -2,13 +2,13 @@
 
 In this project I offer two competing philosophies on where to put the embeddings logic in an LLM vector based RAG?
 
-    /pgai-rag-demo.py
+    src/pgai-rag-demo.py
 
     Pgai, or just ‘ai’ in the postgres extension parlance, adds code to postgres db server which allows the database to connect to your llm model directly and create ‘embeddings’ on insert. This strat enables ingest applications to be unaware of the model specific embeddings for the vector column. Simply build procedures in the db to call out and create the vector col.
 
 And 
 
-    /langchain-rag-demo.py
+    src/langchain-rag-demo.py
 
     Next is the potentially much higher performant solution offered by langchain-postgres - Inserts to the given collections vector column are managed by [sqlalchemy](https://docs.sqlalchemy.org/en/20/). Sqlalchemy manages the db connection and vector column inserts as raw & the application must create the embeddings through the ‘Document’ framework.  The app must be aware of the model and how to build the embeddings for cosine similarity selects.  
 

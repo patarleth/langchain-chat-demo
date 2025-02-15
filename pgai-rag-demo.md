@@ -12,7 +12,7 @@ To run this demo you will need to have installed and prepared both PostgreSQL (I
 
 ## Setup
 
-1. Install [Ollama](https://ollama.ai/) then pull the llama3.2 model as referenced in [pgai-rag-demo.py](pgai-rag-demo.py)
+1. Install [Ollama](https://ollama.ai/) then pull the llama3.2 model as referenced in [pgai-rag-demo.py](src/pgai-rag-demo.py)
 2. Install [pgai](https://github.com/timescale/pgai) and [pgvector](https://github.com/pgvector/pgvector) extensions in your PostgreSQL database.
 
 Not going to lie - setting the db up is a bit of a nightmare, but it's worth it and it's required for this demo heh ;)
