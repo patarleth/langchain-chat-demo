@@ -14,7 +14,7 @@ This app illustrates the basics of building a templated prompt that contains man
 
 Which brings us to the moderately complicated demo - 
 
-* [tools_prompt_main.py](src/tools_prompt_main.py). 
+* [tools_prompt_main.py](src/tools_prompt_main.py)
     
 This small demo flushes out the basic idea of configuring in an Ollama LLM and how to add 'tool' support with a templated prompt.  This app shows the bones of how to create a chat app using LangGraph and runnable agents.  
 
