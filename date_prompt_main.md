@@ -8,7 +8,7 @@ First is yet another pointless demo - the [date_prompt_main](src/date_prompt_mai
 
 Moving on to a moderately complicated demo - [tools_prompt_main.py](src/tools_prompt_main.py). This small demo flushes out the basic idea of configuring in an Ollama LLM and how to add 'tool' support with a templated prompt.  This app shows the bones of how to create a chat app using LangGraph and runnable agents.  
 
-If confused on the difference of the two apis provided by langchain - link of LangChain as the basic library for interacting with LLMs as 'agents'. And LangGraph as the orchestration framework in which you arrange those runnable agents.
+If new to LangChain or are just confused on the difference of their two apis - think of LangChain as a basic library for interacting with LLMs as 'agents', with LangGraph providing an API acting as an orchestration framework in which you arrange those runnable agents.
 
 That is a lot of buzzwords I know, but here goes -
 
