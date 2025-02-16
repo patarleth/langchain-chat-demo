@@ -2,7 +2,6 @@ import os
 
 from tool_prompt.utils import PromptToolUtils
 
-from langchain_core.prompts import PromptTemplate
 from langchain_ollama import ChatOllama
 
 # #################
@@ -10,8 +9,9 @@ from langchain_ollama import ChatOllama
 base_url=os.environ.get('OLLAMA_HOST', 'http://localhost:11434')
 
 model = ChatOllama(
-    # model="llama3.3:latest",
-    model="openhermes",
+    # busted out of the box - model="llama3.2:latest",
+    # fastest - model="openhermes",
+    model = "mistral-small:latest",
     temperature=0,
     base_url=base_url,
     # other params...
