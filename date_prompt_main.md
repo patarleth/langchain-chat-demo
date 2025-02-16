@@ -4,13 +4,15 @@ I know what you are thinking... could this actually be a moderately complicated 
 
 Yes, yes one of these is.
 
-The ([date_prompt_main](src/date_prompt_main.py)) app illustrates the idea of a templated prompt.
+First is yet another pointless demo - the ([date_prompt_main](src/date_prompt_main.py)) app which illustrates the idea of building a templated prompt.
 
-[tools_prompt_main](src/tools_prompt_main.py) flushes out the idea of adding 'tool' support to the template to create a chat app based on langgraph runnable agents.  If Langchain provides the basic library for interacting with LLMs then think of LangGraph as an orchestration lib to arrange these runnable agents.
+Moving on to the actually complicated demo is the [tools_prompt_main.py](src/tools_prompt_main.py) app. This demo flushes out the basic idea of adding 'tool' support to a templated prompt for the purpose of creating a chat app based on LangGraph runnable agents.  
+
+If confused on the difference of the two apis provided by langchain - link of LangChain as the basic library for interacting with LLMs as 'agents'. And LangGraph as the orchestration framework in which you arrange those runnable agents.
 
 That is a lot of buzzwords I know, but here goes -
 
-prompt templates:
+Prompt templates:
 
     Per langchain docs - a <a href="https://python.langchain.com/docs/concepts/prompt_templates/">Prompt Template</a> offers a template mechanism to translate user input and paramaters into instructions for a language model using plain old english.  
     
