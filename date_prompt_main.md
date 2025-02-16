@@ -4,7 +4,7 @@ I know what you are thinking... could this actually be a moderately complicated 
 
 Yes, yes one of these is.
 
-First is yet another pointless demo - the ([date_prompt_main](src/date_prompt_main.py)) app which illustrates the idea of building a templated prompt.
+First is yet another pointless demo - the [date_prompt_main](src/date_prompt_main.py) app which illustrates the idea of building a templated prompt.
 
 Moving on to a moderately complicated demo - [tools_prompt_main.py](src/tools_prompt_main.py). This small demo flushes out the basic idea of configuring in an Ollama LLM and how to add 'tool' support with a templated prompt.  This app shows the bones of how to create a chat app using LangGraph and runnable agents.  
 
