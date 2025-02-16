@@ -14,7 +14,7 @@ If new to LangChain or are just confused on the difference of their two apis - t
 
 That is a lot of buzzwords... but here goes -
 
-Prompt templates:
+### Prompt templates
 
     Per langchain docs - a <a href="https://python.langchain.com/docs/concepts/prompt_templates/">Prompt Template</a> offers a template mechanism to translate user input and paramaters into instructions for a language model using plain old english.  
     
@@ -22,7 +22,7 @@ Prompt templates:
     
     Check out this [how-to](https://python.langchain.com/docs/how_to/#prompt-templates) guide provided by langchain. It offers a good number of template suggestions, ideas to get you started writing your prompt template for an agent.
 
-tool nodes:
+### tool nodes
 
     Langchain "<a href="https://langchain-ai.github.io/langgraph/how-tos/tool-calling/">Tool Calling</a>" enables a "ReAct" agent (could they have choosen a different name for the love of.....moving on) to call functions or as they term it "tools" which provide additional state, information to the agent's LLM.  
     
@@ -30,7 +30,7 @@ tool nodes:
 
     Another example of a tool might be something like get_today(). A LLM obviously will not 'know' what day it is unless it is told. Other tools can enable the LLM to do math, gather live statistics, perhaps business/sales data inventory and so on.
 
-ReAct Agents:
+### ReAct Agents
 
     At the heart of a LangGraph app is the idea of an agent. An agent is a runnable piece of code that both accepts and establishes a notion of 'State'. Agents are arranged or orchestrated in a graph, which can have cycles... so enjoy.
 
