@@ -1,5 +1,5 @@
 import pandas as pd
-import io, os
+import io, os, os.path
 import logging
 
 from datetime import datetime
@@ -15,8 +15,15 @@ class DatePrompt:
             today = datetime.today().strftime('%Y-%m-%d')
         if prompt_tempate_filename is None:
             prompt_tempate_filename = os.path.dirname(os.path.realpath(__file__)) + "/date_prompt_template.txt"
+        else:
+            if os.path.isfile(prompt_tempate_filename) == False:
+                prompt_tempate_filename = os.path.dirname(os.path.realpath(__file__)) + "/" + prompt_tempate_filename
+
         if cal_json_filename is None:
             cal_json_filename = os.path.dirname(os.path.realpath(__file__)) + "/weha_town_ical.jsonl"
+        else:
+            if os.path.isfile(cal_json_filename) == False:
+                cal_json_filename = os.path.dirname(os.path.realpath(__file__)) + "/" + cal_json_filename
 
         # print(f"logger name {__name__}")
         self.logger = logging.getLogger(__name__)

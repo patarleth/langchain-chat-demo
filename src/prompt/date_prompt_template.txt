@@ -4,6 +4,8 @@ You have access to the following tools:
 
 {tools}
 
+Action: the action to take, should be one of [{tool_names}]
+
 You can use any of the following time references that I know the dates of: 
 - TODAY: current date
 - TOMORROW: tomorrow's date
@@ -47,3 +49,6 @@ Examples:
 Context:
 __CONTEXT__
 The sentence comes from someone living in __ORIGIN__.
+
+Question: {input}
+Thought:{agent_scratchpad}
