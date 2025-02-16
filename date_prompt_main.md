@@ -22,7 +22,7 @@ If new to LangChain or are just confused on the difference of their two apis - t
 
 --- 
 
-That is a lot of buzzwords... but here goes -
+That was a lot of buzzwords... but here goes -
 
 ### Prompt templates
 
