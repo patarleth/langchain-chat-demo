@@ -24,18 +24,24 @@ If code prompts you more than once, click ignore.
 
 ## test containers
 
-[langchain-demo](langchain-demo.md) 
+[langchain_main](langchain_main.md) 
 	
 	- langchain used to generate a prompt and print.
 
 <hr />
 
-[pgai-rag-demo](pgai-rag-demo.md)
+[pgai_rag_main](pgai_rag_main.md)
 
 	- pgai/pgvector rag using postgresql to generate a prompt and print. 
 
 <hr />
 
-[langchain-rag-demo](langchain-rag-demo.md)
+[langchain_rag_main](langchain_rag_main.md)
+
+	- langchain-postgres.PGVector used to generate document embeddings and print similarities.
+
+<hr />
+
+[date_prompt_main](date_prompt_main.md)
 
 	- langchain-postgres.PGVector used to generate document embeddings and print similarities.
