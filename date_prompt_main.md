@@ -10,6 +10,8 @@ Moving on to a moderately complicated demo - [tools_prompt_main.py](src/tools_pr
 
 If new to LangChain or are just confused on the difference of their two apis - think of LangChain as a basic library for interacting with LLMs as 'agents', with LangGraph providing an API acting as an orchestration framework in which you arrange those runnable agents.
 
+--- 
+
 That is a lot of buzzwords... but here goes -
 
 Prompt templates:
