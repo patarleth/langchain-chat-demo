@@ -4,9 +4,19 @@ I know what you are thinking... could this actually be a moderately complicated 
 
 Yes, yes one of these is.
 
-First, another mostly pointless demo - [date_prompt_main](src/date_prompt_main.py) . This app illustrates the basics of building a templated prompt that contains many, many options.
+First, another mostly pointless demo - 
 
-Moving on to a moderately complicated demo - [tools_prompt_main.py](src/tools_prompt_main.py). This small demo flushes out the basic idea of configuring in an Ollama LLM and how to add 'tool' support with a templated prompt.  This app shows the bones of how to create a chat app using LangGraph and runnable agents.  
+    [date_prompt_main](src/date_prompt_main.py)
+
+This app illustrates the basics of building a templated prompt that contains many, many options.
+ 
+ ---
+
+Which brings us to the moderately complicated demo - 
+
+    [tools_prompt_main.py](src/tools_prompt_main.py). 
+    
+This small demo flushes out the basic idea of configuring in an Ollama LLM and how to add 'tool' support with a templated prompt.  This app shows the bones of how to create a chat app using LangGraph and runnable agents.  
 
 If new to LangChain or are just confused on the difference of their two apis - think of LangChain as a basic library for interacting with LLMs as 'agents', with LangGraph providing an API acting as an orchestration framework in which you arrange those runnable agents.
 
