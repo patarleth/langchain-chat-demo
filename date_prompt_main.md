@@ -16,7 +16,7 @@ Which brings us to the moderately complicated demo -
 
 * [tools_prompt_main.py](src/tools_prompt_main.py)
     
-This small demo flushes out the basic idea of configuring in an Ollama LLM and how to add 'tool' support with a templated prompt.  This app shows the bones of how to create a chat app using LangGraph and runnable agents.  
+This small demo flushes out the basic idea of configuring in an <a href="https://ollama.com/">Ollama</a> provided LLM and how to add 'tool' support with a templated prompt.  This app shows the bones of how to create a chat app using LangGraph and runnable agents.  
 
 If new to LangChain or are just confused on the difference of their two apis - think of LangChain as a basic library for interacting with LLMs as 'agents', with LangGraph providing an API acting as an orchestration framework in which you arrange those runnable agents.
 
