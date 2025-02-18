@@ -1,5 +1,5 @@
 from datetime import datetime
-
+import pytz
 from prompt.date_prompt import DatePrompt
 from tool_prompt.agents import AgentState
 
@@ -47,7 +47,7 @@ class PromptToolUtils:
         return create_react_agent(self.model, self.tools(), self.prompt_template)
     
     @staticmethod
-    def run(prompt_tools):
+    def run(prompt_tools, input_text = "Whats the current time?"):
         tool_node = prompt_tools.tool_node()
         agent_runnable = prompt_tools.create_react_agent()
 
@@ -109,21 +109,28 @@ class PromptToolUtils:
             return workflow.compile()
 
         app = compile_workflow()
-
-        input_text = "Whats the current time?"
+        
         inputs = {"input": input_text, "chat_history": []}
 
         results = []
+        last_result = None
         for s in app.stream(inputs):
-            result = list(s.values())[0]
-            results.append(result)
-            print(result)
-
+            last_result = list(s.values())[0]
+            results.append(last_result)
+        print(f"all results found including intermediate steps - {results}")
+        if last_result is not None:
+            print("some result found")
+            agent_outcome = last_result["agent_outcome"]
+            if agent_outcome is not None:
+                print("agent outcome found")
+                return_values = agent_outcome.return_values
+                if return_values is not None and return_values["output"] is not None:
+                    print(f"\n--------> {return_values['output']}")
 
 
     @tool
-    def get_now(format: str = "%Y-%m-%d %H:%M:%S"):
+    def get_now(format: str = "%Y-%m-%d %H:%M:%S", timezone: str = 'America/New_York'):
         """
         Get the current time
         """
-        return datetime.now().strftime(format)
+        return datetime.now(tz=pytz.timezone(timezone)).strftime(format)

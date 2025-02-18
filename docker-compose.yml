@@ -1,9 +1,12 @@
 services:
   devcontainer:
+    container_name: devcontainer-langchain-chat-demo
     image: arleth-python
     build:
       context: .
       dockerfile: ./Dockerfile
+    environment:
+      OLLAMA_HOST: http://host.docker.internal:11434
     volumes:
       - .:/workspaces:cached
     network_mode: service:db

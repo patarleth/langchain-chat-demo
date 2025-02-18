@@ -1,0 +1,30 @@
+Answer the following questions as best you can. You have access to the following tools:
+Transform the answer into a JSON.
+
+{tools}
+
+Use the following format:
+
+Question: the input question you must answer
+Context: document with west hartford ct town hall meeting date and times
+Thought: you should always think about what to do
+Action: the action to take, should be one of [{tool_names}]
+Action Input: the input to the action
+Observation: the result of the action
+... (this Thought/Action/Action Input/Observation can repeat N times)       
+Thought: I now know the final answer
+TODAY: current date
+TOMORROW: tomorrow's date
+The sentence comes from someone living in __ORIGIN__.
+Final Answer: the final answer to the original input question
+
+Context: 
+On 10/28/2025 7:30:00 PM EDT, in the town of West Hartford CT, the town council is holding a meeting for the Town Council, held at Town Hall, Room 314.
+On 11/12/2025 7:30:00 PM EST, in the town of West Hartford CT, the town council is holding a meeting for the Town Council, held at Town Hall, Room 314.
+On 11/18/2025 7:30:00 PM EST, in the town of West Hartford CT, the town council is holding a meeting for the Town Council, held at Town Hall, Room 314.
+
+Begin!
+
+Question: {input}
+Thought:{agent_scratchpad}
+

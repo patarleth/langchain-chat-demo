@@ -6,12 +6,12 @@
 	// Update the 'dockerComposeFile' list if you have more compose files or use different names.
 	// The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
 	"dockerComposeFile": [
-		"../docker-compose.yml",
-		"docker-compose.yml"
+	    "../docker-compose.yml",
+	    "docker-compose.yml"
 	],
 
 	"containerEnv": {
-		"OLLAMA_HOST": "http://spicynoodleM4.taild54a2.ts.net:11434",
+		"OLLAMA_HOST": "http://host.docker.internal:11434",
 		"POSTGRESQL_HOST": "snp-containers.taild54a2.ts.net",
 		"POSTGRESQL_PORT": "5432",
 		"POSTGRES_USER": "postgres",
@@ -19,7 +19,7 @@
 		"POSTGRES_DB": "postgres"
 	},
 	"remoteEnv": {
-		"OLLAMA_HOST": "http://spicynoodleM4.taild54a2.ts.net:11434",
+		"OLLAMA_HOST": "http://host.docker.internal:11434",
 		"POSTGRESQL_HOST": "snp-containers.taild54a2.ts.net",
 		"POSTGRESQL_PORT": "5432",
 		"POSTGRES_USER": "postgres",
